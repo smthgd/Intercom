@@ -10,11 +10,25 @@ using System.Windows.Forms;
 
 namespace IntercomProject
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.FromArgb(39, 37, 55);
+        }
+
+        private void applicationsButton_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<ApplicationsForm>().Count() == 0)
+            {
+                ApplicationsForm applicationsForm = new ApplicationsForm();
+                applicationsForm.MdiParent = this;
+
+                applicationsForm.Show();
+                //MessageBox.Show(Application.OpenForms.OfType<ApplicationsForm>().Count().ToString());
+            }
         }
     }
 }
