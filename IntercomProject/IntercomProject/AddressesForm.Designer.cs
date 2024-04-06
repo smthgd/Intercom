@@ -1,6 +1,6 @@
 ﻿namespace IntercomProject
 {
-    partial class ApplicationsForm
+    partial class AddressesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // ApplicationsForm
+            // AddressesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(778, 394);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ApplicationsForm";
+            this.Name = "AddressesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "ApplicationsForm";
+            this.Text = "AddressesForm";
             this.ResumeLayout(false);
 
         }

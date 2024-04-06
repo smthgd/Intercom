@@ -21,14 +21,49 @@ namespace IntercomProject
 
         private void applicationsButton_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<ApplicationsForm>().Count() == 0)
-            {
-                ApplicationsForm applicationsForm = new ApplicationsForm();
-                applicationsForm.MdiParent = this;
+            ApplicationsForm applicationsForm = new ApplicationsForm();
 
+            if (Application.OpenForms.OfType<ApplicationsForm>().Count() == 0 && Application.OpenForms.OfType<AddressesForm>().Count() == 0)
+            {
+                applicationsForm.MdiParent = this;
                 applicationsForm.Show();
-                //MessageBox.Show(Application.OpenForms.OfType<ApplicationsForm>().Count().ToString());
             }
+            else
+            {
+                foreach (Form mdiChildForm in this.MdiChildren)
+                {
+                    mdiChildForm.Close();
+                }
+
+                applicationsForm.MdiParent = this;
+                applicationsForm.Show();
+            }
+        }
+
+        private void addressesButton_Click(object sender, EventArgs e)
+        {
+            AddressesForm addressesForm = new AddressesForm();
+
+            if (Application.OpenForms.OfType<AddressesForm>().Count() == 0 && Application.OpenForms.OfType<ApplicationsForm>().Count() == 0)
+            {
+                addressesForm.MdiParent = this;
+                addressesForm.Show();
+            }
+            else
+            {
+                foreach (Form mdiChildForm in this.MdiChildren)
+                {
+                    mdiChildForm.Close();
+                }
+
+                addressesForm.MdiParent = this;
+                addressesForm.Show();
+            }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -32,6 +32,8 @@
             this.SystemName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.applicationsButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.addressesButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -39,6 +41,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.CloseButton);
             this.panel1.Controls.Add(this.SystemName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -59,6 +62,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.addressesButton);
             this.panel2.Controls.Add(this.applicationsButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 65);
@@ -71,6 +75,8 @@
             this.applicationsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.applicationsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.applicationsButton.FlatAppearance.BorderSize = 0;
+            this.applicationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applicationsButton.Font = new System.Drawing.Font("Century", 15F);
             this.applicationsButton.ForeColor = System.Drawing.SystemColors.Control;
             this.applicationsButton.Location = new System.Drawing.Point(3, 6);
@@ -81,6 +87,39 @@
             this.applicationsButton.UseVisualStyleBackColor = false;
             this.applicationsButton.Click += new System.EventHandler(this.applicationsButton_Click);
             // 
+            // CloseButton
+            // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.CloseButton.Location = new System.Drawing.Point(1270, 7);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(50, 50);
+            this.CloseButton.TabIndex = 3;
+            this.CloseButton.Text = "x";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // addressesButton
+            // 
+            this.addressesButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.addressesButton.FlatAppearance.BorderSize = 0;
+            this.addressesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addressesButton.Font = new System.Drawing.Font("Century", 15F);
+            this.addressesButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.addressesButton.Location = new System.Drawing.Point(3, 62);
+            this.addressesButton.Name = "addressesButton";
+            this.addressesButton.Size = new System.Drawing.Size(294, 50);
+            this.addressesButton.TabIndex = 2;
+            this.addressesButton.Text = "Адреса";
+            this.addressesButton.UseVisualStyleBackColor = false;
+            this.addressesButton.Click += new System.EventHandler(this.addressesButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -89,6 +128,7 @@
             this.ClientSize = new System.Drawing.Size(1332, 778);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -108,6 +148,8 @@
         private System.Windows.Forms.Label SystemName;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button applicationsButton;
+        private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button addressesButton;
     }
 }
 
