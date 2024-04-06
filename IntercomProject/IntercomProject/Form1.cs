@@ -26,6 +26,7 @@ namespace IntercomProject
             if (Application.OpenForms.OfType<ApplicationsForm>().Count() == 0 && Application.OpenForms.OfType<AddressesForm>().Count() == 0)
             {
                 applicationsForm.MdiParent = this;
+                applicationsForm.Dock = DockStyle.Fill;
                 applicationsForm.Show();
             }
             else
@@ -36,6 +37,7 @@ namespace IntercomProject
                 }
 
                 applicationsForm.MdiParent = this;
+                applicationsForm.Dock = DockStyle.Fill;
                 applicationsForm.Show();
             }
         }
@@ -47,6 +49,7 @@ namespace IntercomProject
             if (Application.OpenForms.OfType<AddressesForm>().Count() == 0 && Application.OpenForms.OfType<ApplicationsForm>().Count() == 0)
             {
                 addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
                 addressesForm.Show();
             }
             else
@@ -57,6 +60,7 @@ namespace IntercomProject
                 }
 
                 addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
                 addressesForm.Show();
             }
         }

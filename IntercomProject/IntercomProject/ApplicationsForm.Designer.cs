@@ -29,32 +29,100 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.EdditingButton = new System.Windows.Forms.Button();
+            this.DeletingButton = new System.Windows.Forms.Button();
+            this.AddingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 100);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1219, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(977, 150);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.panel1.Controls.Add(this.EdditingButton);
+            this.panel1.Controls.Add(this.DeletingButton);
+            this.panel1.Controls.Add(this.AddingButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(977, 100);
+            this.panel1.TabIndex = 2;
+            // 
+            // EdditingButton
+            // 
+            this.EdditingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EdditingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.EdditingButton.FlatAppearance.BorderSize = 0;
+            this.EdditingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EdditingButton.Font = new System.Drawing.Font("Century", 15F);
+            this.EdditingButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.EdditingButton.Location = new System.Drawing.Point(326, 0);
+            this.EdditingButton.Name = "EdditingButton";
+            this.EdditingButton.Size = new System.Drawing.Size(325, 100);
+            this.EdditingButton.TabIndex = 2;
+            this.EdditingButton.Text = "Изменить";
+            this.EdditingButton.UseVisualStyleBackColor = false;
+            // 
+            // DeletingButton
+            // 
+            this.DeletingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeletingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.DeletingButton.FlatAppearance.BorderSize = 0;
+            this.DeletingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeletingButton.Font = new System.Drawing.Font("Century", 15F);
+            this.DeletingButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DeletingButton.Location = new System.Drawing.Point(652, 0);
+            this.DeletingButton.Name = "DeletingButton";
+            this.DeletingButton.Size = new System.Drawing.Size(325, 100);
+            this.DeletingButton.TabIndex = 3;
+            this.DeletingButton.Text = "Удалить";
+            this.DeletingButton.UseVisualStyleBackColor = false;
+            // 
+            // AddingButton
+            // 
+            this.AddingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.AddingButton.FlatAppearance.BorderSize = 0;
+            this.AddingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddingButton.Font = new System.Drawing.Font("Century", 15F);
+            this.AddingButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AddingButton.Location = new System.Drawing.Point(0, 0);
+            this.AddingButton.Name = "AddingButton";
+            this.AddingButton.Size = new System.Drawing.Size(325, 100);
+            this.AddingButton.TabIndex = 1;
+            this.AddingButton.Text = "Добавить";
+            this.AddingButton.UseVisualStyleBackColor = false;
             // 
             // ApplicationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1219, 450);
+            this.ClientSize = new System.Drawing.Size(977, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ApplicationsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ApplicationsForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -62,5 +130,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button EdditingButton;
+        private System.Windows.Forms.Button DeletingButton;
+        private System.Windows.Forms.Button AddingButton;
     }
 }

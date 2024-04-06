@@ -19,10 +19,6 @@ namespace IntercomProject
         public ApplicationsForm()
         {
             InitializeComponent();
-
-            this.Width = Application.OpenForms.OfType<MainForm>().FirstOrDefault().Width;
-            this.Height = Application.OpenForms.OfType<MainForm>().FirstOrDefault().Height;
-
             LoadData(); 
         }
 
