@@ -33,6 +33,7 @@
             this.EdditingButton = new System.Windows.Forms.Button();
             this.DeletingButton = new System.Windows.Forms.Button();
             this.AddingButton = new System.Windows.Forms.Button();
+            this.MoreButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,31 +53,30 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(977, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(1300, 150);
             this.dataGridView1.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.panel1.Controls.Add(this.MoreButton);
             this.panel1.Controls.Add(this.EdditingButton);
             this.panel1.Controls.Add(this.DeletingButton);
             this.panel1.Controls.Add(this.AddingButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 100);
+            this.panel1.Size = new System.Drawing.Size(1300, 100);
             this.panel1.TabIndex = 2;
             // 
             // EdditingButton
             // 
-            this.EdditingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EdditingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.EdditingButton.FlatAppearance.BorderSize = 0;
             this.EdditingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EdditingButton.Font = new System.Drawing.Font("Century", 15F);
             this.EdditingButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.EdditingButton.Location = new System.Drawing.Point(326, 0);
+            this.EdditingButton.Location = new System.Drawing.Point(325, 0);
             this.EdditingButton.Name = "EdditingButton";
             this.EdditingButton.Size = new System.Drawing.Size(325, 100);
             this.EdditingButton.TabIndex = 2;
@@ -92,7 +92,7 @@
             this.DeletingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeletingButton.Font = new System.Drawing.Font("Century", 15F);
             this.DeletingButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.DeletingButton.Location = new System.Drawing.Point(652, 0);
+            this.DeletingButton.Location = new System.Drawing.Point(650, 0);
             this.DeletingButton.Name = "DeletingButton";
             this.DeletingButton.Size = new System.Drawing.Size(325, 100);
             this.DeletingButton.TabIndex = 3;
@@ -113,11 +113,26 @@
             this.AddingButton.Text = "Добавить";
             this.AddingButton.UseVisualStyleBackColor = false;
             // 
+            // MoreButton
+            // 
+            this.MoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.MoreButton.FlatAppearance.BorderSize = 0;
+            this.MoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoreButton.Font = new System.Drawing.Font("Century", 15F);
+            this.MoreButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MoreButton.Location = new System.Drawing.Point(975, 0);
+            this.MoreButton.Name = "MoreButton";
+            this.MoreButton.Size = new System.Drawing.Size(325, 100);
+            this.MoreButton.TabIndex = 4;
+            this.MoreButton.Text = "Подробнее";
+            this.MoreButton.UseVisualStyleBackColor = false;
+            // 
             // ApplicationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 450);
+            this.ClientSize = new System.Drawing.Size(1300, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -137,5 +152,6 @@
         private System.Windows.Forms.Button EdditingButton;
         private System.Windows.Forms.Button DeletingButton;
         private System.Windows.Forms.Button AddingButton;
+        private System.Windows.Forms.Button MoreButton;
     }
 }
