@@ -70,5 +70,32 @@ namespace IntercomProject
             get { return txtApplicationApartmentNumber.Text; }
             set { txtApplicationApartmentNumber.Text = value; }
         }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(txtApplicationStreet.Text))
+            {
+                errorProvider1.SetError(txtApplicationStreet, "Значение поля не может быть пустым");
+            }
+            else if (string.IsNullOrEmpty(txtApplicationHouseNumber.Text))
+            {
+                errorProvider1.SetError(txtApplicationHouseNumber, "Значение поля не может быть пустым");
+            }
+            else if (string.IsNullOrEmpty(txtApplicationEmployeeName.Text))
+            {
+                errorProvider1.SetError(txtApplicationEmployeeName, "Значение поля не может быть пустым");
+            }
+            else if (string.IsNullOrEmpty(txtApplicationUser.Text))
+            {
+                errorProvider1.SetError(txtApplicationUser, "Значение поля не может быть пустым");
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
     }
 }
