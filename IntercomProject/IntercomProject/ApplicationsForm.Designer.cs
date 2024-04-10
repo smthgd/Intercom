@@ -82,6 +82,7 @@
             this.EdditingButton.TabIndex = 2;
             this.EdditingButton.Text = "Изменить";
             this.EdditingButton.UseVisualStyleBackColor = false;
+            this.EdditingButton.Click += new System.EventHandler(this.EdditingButton_Click);
             // 
             // DeletingButton
             // 

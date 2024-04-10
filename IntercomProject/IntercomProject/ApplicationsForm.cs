@@ -45,5 +45,38 @@ namespace IntercomProject
                 Controls.Add(dataGridView1);
             }
         }
+
+        private void EdditingButton_Click(object sender, EventArgs e)
+        {
+            var form = new EditApplicationsForm();
+
+            string[] address = dataGridView1.CurrentRow.Cells[0].Value.ToString().Split('.');
+            address[0] = address[0].Substring(0, address[0].Length - 2);
+            address[1] = address[1].Substring(0, address[1].Length - 3);
+            address[2] = address[2].Substring(0, address[2].Length - 4);
+
+            string editApplicationStreet = address[0];
+            string editApplicationHouseNumber = address[1];
+            string editApplicationEntranceNumber = address[2];
+            string editApplicationApartmentNumber = address[3];
+            string editApplicationText = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string editApplicationServiceDate = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string editApplicationEmployeeName = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            string editApplicationPriority = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+            form.ApplicationStreet = editApplicationStreet;
+            form.ApplicationHouseNumber = editApplicationHouseNumber;
+            form.ApplicationEntranceNumber = editApplicationEntranceNumber;
+            form.ApplicationApartmentNumber = editApplicationApartmentNumber;
+            form.ApplicationText = editApplicationText;
+            form.ApplicationServiceDate = editApplicationServiceDate;
+            form.ApplicationEmployeeName = editApplicationEmployeeName;
+            form.ApplicationPriority = editApplicationPriority;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("OK");
+            }
+        }
     }
 }
