@@ -71,6 +71,18 @@ namespace IntercomProject
             set { txtApplicationApartmentNumber.Text = value; }
         }
 
+        public string ApplicationUser
+        {
+            get { return txtApplicationUser.Text; }
+            set { txtApplicationUser.Text = value; }
+        }
+
+        public string ApplicationNotes
+        {
+            get { return txtApplicationNotes.Text; }
+            set { txtApplicationNotes.Text = value; }
+        }
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();

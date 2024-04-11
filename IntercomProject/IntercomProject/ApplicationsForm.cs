@@ -50,19 +50,41 @@ namespace IntercomProject
         {
             var form = new EditApplicationsForm();
 
-            string[] address = dataGridView1.CurrentRow.Cells[0].Value.ToString().Split('.');
+            string query = "SELECT `Дата приема`, Примечания, CONCAT(Пользователи.Фамилия, ' ', LEFT(Пользователи.Имя, 1), '.', " +
+                           "LEFT(Пользователи.Отчество, 1), '.') AS Пользователь FROM mydb.Заявки " +
+                           $"JOIN mydb.Пользователи ON mydb.Пользователи.idПользователи = mydb.Заявки.ПользователиID " +
+                           $"WHERE idЗаявки = {dataGridView1.CurrentRow.Cells[0].Value};";
+
+            string[] address = dataGridView1.CurrentRow.Cells[1].Value.ToString().Split('.');
             address[0] = address[0].Substring(0, address[0].Length - 2);
             address[1] = address[1].Substring(0, address[1].Length - 3);
             address[2] = address[2].Substring(0, address[2].Length - 4);
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue($"{dataGridView1.CurrentRow.Cells[0].Value}", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+
+                using (MySqlDataReader dataReader = command.ExecuteReader())
+                {
+                    dataReader.Read();
+
+                    form.ApplicationDate = dataReader["Дата приема"].ToString();
+                    form.ApplicationUser = dataReader["Пользователь"].ToString();
+                    form.ApplicationNotes = dataReader["Примечания"].ToString();
+                }
+            }
 
             string editApplicationStreet = address[0];
             string editApplicationHouseNumber = address[1];
             string editApplicationEntranceNumber = address[2];
             string editApplicationApartmentNumber = address[3];
-            string editApplicationText = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            string editApplicationServiceDate = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            string editApplicationEmployeeName = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            string editApplicationPriority = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            string editApplicationText = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string editApplicationServiceDate = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            string editApplicationEmployeeName = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            string editApplicationPriority = dataGridView1.CurrentRow.Cells[5].Value.ToString();
 
             form.ApplicationStreet = editApplicationStreet;
             form.ApplicationHouseNumber = editApplicationHouseNumber;
