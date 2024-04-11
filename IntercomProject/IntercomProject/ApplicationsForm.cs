@@ -60,23 +60,6 @@ namespace IntercomProject
             address[1] = address[1].Substring(0, address[1].Length - 3);
             address[2] = address[2].Substring(0, address[2].Length - 4);
 
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                connection.Open();
-
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue($"{dataGridView1.CurrentRow.Cells[0].Value}", dataGridView1.CurrentRow.Cells[0].Value.ToString());
-
-                using (MySqlDataReader dataReader = command.ExecuteReader())
-                {
-                    dataReader.Read();
-
-                    form.ApplicationDate = dataReader["Дата приема"].ToString();
-                    form.ApplicationUser = dataReader["Пользователь"].ToString();
-                    form.ApplicationNotes = dataReader["Примечания"].ToString();
-                }
-            }
-
             string editApplicationStreet = address[0];
             string editApplicationHouseNumber = address[1];
             string editApplicationEntranceNumber = address[2];
@@ -92,12 +75,41 @@ namespace IntercomProject
             form.ApplicationApartmentNumber = editApplicationApartmentNumber;
             form.ApplicationText = editApplicationText;
             form.ApplicationServiceDate = editApplicationServiceDate;
-            form.ApplicationEmployeeName = editApplicationEmployeeName;
+            //form.ApplicationEmployeeName = editApplicationEmployeeName;
             form.ApplicationPriority = editApplicationPriority;
 
-            if (form.ShowDialog() == DialogResult.OK)
+            using (var connection = new MySqlConnection(connectionString))
             {
-                MessageBox.Show("OK");
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue($"{dataGridView1.CurrentRow.Cells[0].Value}", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+
+                using (MySqlDataReader dataReader = command.ExecuteReader())
+                {
+                    dataReader.Read();
+
+                    form.ApplicationDate = dataReader["Дата приема"].ToString();
+                    form.ApplicationUser = dataReader["Пользователь"].ToString();
+                    form.ApplicationNotes = dataReader["Примечания"].ToString();
+                }
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string updateCommand = "UPDATE mydb.Заявки SET Заявки.`Текст заявки` = @ApplicationText, " +
+                                           "Заявки.Приоритет = @ApplicationPriority, " +
+                                           $"Заявки.Примечания = @ApplicationNotes WHERE Заявки.idЗаявки = {dataGridView1.CurrentRow.Cells[0].Value};";
+
+                    command = new MySqlCommand(updateCommand, connection);
+
+                    command.Parameters.AddWithValue("@ApplicationText", form.ApplicationText);
+                    command.Parameters.AddWithValue("@ApplicationPriority", form.ApplicationPriority);
+                    command.Parameters.AddWithValue("@ApplicationNotes", form.ApplicationNotes);
+
+                    command.ExecuteNonQuery();
+
+                    LoadData();
+                }
             }
         }
     }

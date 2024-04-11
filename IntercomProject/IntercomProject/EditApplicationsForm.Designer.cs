@@ -36,7 +36,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtApplicationUser = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtApplicationEmployeeName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtApplicationApartmentNumber = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtApplicationDate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxApplicationEmployeeName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,13 +124,6 @@
             this.label14.Size = new System.Drawing.Size(103, 20);
             this.label14.TabIndex = 86;
             this.label14.Text = "Кто принял:";
-            // 
-            // txtApplicationEmployeeName
-            // 
-            this.txtApplicationEmployeeName.Location = new System.Drawing.Point(600, 100);
-            this.txtApplicationEmployeeName.Name = "txtApplicationEmployeeName";
-            this.txtApplicationEmployeeName.Size = new System.Drawing.Size(167, 26);
-            this.txtApplicationEmployeeName.TabIndex = 85;
             // 
             // label15
             // 
@@ -314,16 +307,27 @@
             this.label1.TabIndex = 64;
             this.label1.Text = "Дата приема заявки:";
             // 
+            // comboBoxApplicationEmployeeName
+            // 
+            this.comboBoxApplicationEmployeeName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxApplicationEmployeeName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxApplicationEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxApplicationEmployeeName.FormattingEnabled = true;
+            this.comboBoxApplicationEmployeeName.Location = new System.Drawing.Point(600, 100);
+            this.comboBoxApplicationEmployeeName.Name = "comboBoxApplicationEmployeeName";
+            this.comboBoxApplicationEmployeeName.Size = new System.Drawing.Size(167, 28);
+            this.comboBoxApplicationEmployeeName.TabIndex = 90;
+            // 
             // EditApplicationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.comboBoxApplicationEmployeeName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtApplicationUser);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.txtApplicationEmployeeName);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtApplicationApartmentNumber);
             this.Controls.Add(this.label13);
@@ -369,7 +373,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtApplicationUser;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtApplicationEmployeeName;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtApplicationApartmentNumber;
         private System.Windows.Forms.Label label13;
@@ -391,5 +394,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtApplicationDate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxApplicationEmployeeName;
     }
 }
