@@ -31,7 +31,7 @@ namespace IntercomProject
                            "JOIN mydb.квартиры ON mydb.подъезды.idПодъезды = mydb.квартиры.ПодъездID " +
                            "JOIN mydb.заявки ON mydb.адреса.idАдрес = mydb.заявки.РайонID " +
                            "JOIN mydb.районы ON mydb.районы.idРайон = mydb.заявки.РайонID " +
-                           "JOIN mydb.сотрудники ON mydb.заявки.idЗаявки = mydb.заявки.СотрудникиID;";
+                           "JOIN mydb.сотрудники ON mydb.заявки.СотрудникиID = mydb.сотрудники.idСотрудники;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -69,10 +69,10 @@ namespace IntercomProject
             string editApplicationEmployeeName = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             string editApplicationPriority = dataGridView1.CurrentRow.Cells[5].Value.ToString();
 
-            form.ApplicationStreet = editApplicationStreet;
-            form.ApplicationHouseNumber = editApplicationHouseNumber;
-            form.ApplicationEntranceNumber = editApplicationEntranceNumber;
-            form.ApplicationApartmentNumber = editApplicationApartmentNumber;
+            //form.ApplicationStreet = editApplicationStreet;
+            //form.ApplicationHouseNumber = editApplicationHouseNumber;
+            //form.ApplicationEntranceNumber = editApplicationEntranceNumber;
+            //form.ApplicationApartmentNumber = editApplicationApartmentNumber;
             form.ApplicationText = editApplicationText;
             form.ApplicationServiceDate = editApplicationServiceDate;
             //form.ApplicationEmployeeName = editApplicationEmployeeName;

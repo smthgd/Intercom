@@ -45,11 +45,11 @@ namespace IntercomProject
         //    set { txtApplicationEmployeeName.Text = value; }
         //}
 
-        public string ApplicationStreet
-        {
-            get { return txtApplicationStreet.Text; }
-            set { txtApplicationStreet.Text = value; }
-        }
+        //public string ApplicationStreet
+        //{
+        //    get { return txtApplicationStreet.Text; }
+        //    set { txtApplicationStreet.Text = value; }
+        //}
 
         public string ApplicationPriority
         {
@@ -57,23 +57,23 @@ namespace IntercomProject
             set { txtApplicationPriority.Text = value; }
         }
 
-        public string ApplicationHouseNumber
-        {
-            get { return txtApplicationHouseNumber.Text; }
-            set { txtApplicationHouseNumber.Text = value; }
-        }
+        //public string ApplicationHouseNumber
+        //{
+        //    get { return txtApplicationHouseNumber.Text; }
+        //    set { txtApplicationHouseNumber.Text = value; }
+        //}
 
-        public string ApplicationEntranceNumber
-        {
-            get { return txtApplicationEntranceNumber.Text; }
-            set { txtApplicationEntranceNumber.Text = value; }
-        }
+        //public string ApplicationEntranceNumber
+        //{
+        //    get { return txtApplicationEntranceNumber.Text; }
+        //    set { txtApplicationEntranceNumber.Text = value; }
+        //}
 
-        public string ApplicationApartmentNumber
-        {
-            get { return txtApplicationApartmentNumber.Text; }
-            set { txtApplicationApartmentNumber.Text = value; }
-        }
+        //public string ApplicationApartmentNumber
+        //{
+        //    get { return txtApplicationApartmentNumber.Text; }
+        //    set { txtApplicationApartmentNumber.Text = value; }
+        //}
 
         public string ApplicationUser
         {
@@ -91,19 +91,19 @@ namespace IntercomProject
         {
             errorProvider1.Clear();
 
-            if (string.IsNullOrEmpty(txtApplicationStreet.Text))
-            {
-                errorProvider1.SetError(txtApplicationStreet, "Значение поля не может быть пустым");
-            }
-            else if (string.IsNullOrEmpty(txtApplicationHouseNumber.Text))
-            {
-                errorProvider1.SetError(txtApplicationHouseNumber, "Значение поля не может быть пустым");
-            }
+            //if (string.IsNullOrEmpty(txtApplicationStreet.Text))
+            //{
+            //    errorProvider1.SetError(txtApplicationStreet, "Значение поля не может быть пустым");
+            //}
+            //else if (string.IsNullOrEmpty(txtApplicationHouseNumber.Text))
+            //{
+            //    errorProvider1.SetError(txtApplicationHouseNumber, "Значение поля не может быть пустым");
+            //}
             //else if (string.IsNullOrEmpty(txtApplicationEmployeeName.Text))
             //{
             //    errorProvider1.SetError(txtApplicationEmployeeName, "Значение поля не может быть пустым");
             //}
-            else if (string.IsNullOrEmpty(txtApplicationUser.Text))
+            if (string.IsNullOrEmpty(txtApplicationUser.Text))
             {
                 errorProvider1.SetError(txtApplicationUser, "Значение поля не может быть пустым");
             }
@@ -117,11 +117,14 @@ namespace IntercomProject
         private void FillComboBox()
         {
 
-            string query = "SELECT CONCAT(Фамилия, ' ', LEFT(Имя, 1), '.', LEFT(Отчество, 1), '.') AS Исполнитель FROM Сотрудники";
+            string query1 = "SELECT CONCAT(Фамилия, ' ', LEFT(Имя, 1), '.', LEFT(Отчество, 1), '.') AS Исполнитель FROM Сотрудники";
+            string query2 = "SELECT CONCAT(улица, ' д.', `номер дома`, ', п.', `номер подъезда`, ', кв.', `номер квартиры`) AS адрес " +
+                "FROM mydb.Адреса LEFT JOIN mydb.подъезды ON адреса.idАдрес = подъезды.адресаID " +
+                "LEFT JOIN mydb.квартиры ON подъезды.idПодъезды = квартиры.подъездID;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand(query1, connection))
                 {
                     connection.Open();
 
@@ -130,6 +133,20 @@ namespace IntercomProject
                         while (reader.Read())
                         {
                             comboBoxApplicationEmployeeName.Items.Add(reader["Исполнитель"].ToString());
+                        }
+                    }
+                }
+
+                using (MySqlCommand command = new MySqlCommand(query2, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["адрес"].ToString() != "")
+                            {
+                                comboBoxApplicationAddress.Items.Add(reader["адрес"].ToString());
+                            }
                         }
                     }
                 }
