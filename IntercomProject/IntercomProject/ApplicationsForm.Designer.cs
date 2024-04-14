@@ -30,10 +30,10 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MoreButton = new System.Windows.Forms.Button();
             this.EdditingButton = new System.Windows.Forms.Button();
             this.DeletingButton = new System.Windows.Forms.Button();
             this.AddingButton = new System.Windows.Forms.Button();
-            this.MoreButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +70,21 @@
             this.panel1.Size = new System.Drawing.Size(1300, 100);
             this.panel1.TabIndex = 2;
             // 
+            // MoreButton
+            // 
+            this.MoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.MoreButton.FlatAppearance.BorderSize = 0;
+            this.MoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoreButton.Font = new System.Drawing.Font("Century", 15F);
+            this.MoreButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MoreButton.Location = new System.Drawing.Point(975, 0);
+            this.MoreButton.Name = "MoreButton";
+            this.MoreButton.Size = new System.Drawing.Size(325, 100);
+            this.MoreButton.TabIndex = 4;
+            this.MoreButton.Text = "Подробнее";
+            this.MoreButton.UseVisualStyleBackColor = false;
+            // 
             // EdditingButton
             // 
             this.EdditingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
@@ -99,6 +114,7 @@
             this.DeletingButton.TabIndex = 3;
             this.DeletingButton.Text = "Удалить";
             this.DeletingButton.UseVisualStyleBackColor = false;
+            this.DeletingButton.Click += new System.EventHandler(this.DeletingButton_Click);
             // 
             // AddingButton
             // 
@@ -113,21 +129,6 @@
             this.AddingButton.TabIndex = 1;
             this.AddingButton.Text = "Добавить";
             this.AddingButton.UseVisualStyleBackColor = false;
-            // 
-            // MoreButton
-            // 
-            this.MoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
-            this.MoreButton.FlatAppearance.BorderSize = 0;
-            this.MoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MoreButton.Font = new System.Drawing.Font("Century", 15F);
-            this.MoreButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.MoreButton.Location = new System.Drawing.Point(975, 0);
-            this.MoreButton.Name = "MoreButton";
-            this.MoreButton.Size = new System.Drawing.Size(325, 100);
-            this.MoreButton.TabIndex = 4;
-            this.MoreButton.Text = "Подробнее";
-            this.MoreButton.UseVisualStyleBackColor = false;
             // 
             // ApplicationsForm
             // 

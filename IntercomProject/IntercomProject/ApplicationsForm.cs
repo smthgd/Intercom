@@ -188,5 +188,36 @@ namespace IntercomProject
                 }
             }
         }
+
+        private void DeletingButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+
+            if (clickedButton.Name == "DeletingButton")
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить выбранную запись?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        int idToDelete = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+                        string query = "DELETE FROM mydb.Заявки WHERE idЗаявки = @ID";
+
+                        using (MySqlConnection connection = new MySqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ID", idToDelete);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    LoadData();
+                }
+            }
+        }
     }
 }
