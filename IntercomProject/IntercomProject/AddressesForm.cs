@@ -107,5 +107,45 @@ namespace IntercomProject
                 }
             }
         }
+
+        private void DeletingButtonAdress_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+
+            if (clickedButton.Name == "DeletingButtonAdress")
+            {
+                if (dataGridView2.CurrentRow != null)
+                {
+                    DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить выбранную квартиру?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        int idApartmentToDelete = Convert.ToInt32(dataGridView2.CurrentRow.Cells[4].Value);
+
+                        string queryDeleteApplications = "DELETE FROM mydb.Заявки WHERE КвартираID = @ID";
+                        string queryDeleteApartment = "DELETE FROM mydb.Квартиры WHERE idквартиры = @ID";
+
+                        using (MySqlConnection connection = new MySqlConnection(connectionString))
+                        {
+                            connection.Open();
+
+                            using (MySqlCommand commandDeleteApplications = new MySqlCommand(queryDeleteApplications, connection))
+                            {
+                                commandDeleteApplications.Parameters.AddWithValue("@ID", idApartmentToDelete);
+                                commandDeleteApplications.ExecuteNonQuery();
+                            }
+
+                            using (MySqlCommand commandDeleteApartment = new MySqlCommand(queryDeleteApartment, connection))
+                            {
+                                commandDeleteApartment.Parameters.AddWithValue("@ID", idApartmentToDelete);
+                                commandDeleteApartment.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    LoadData();
+                }
+            }
+        }
     }
 }

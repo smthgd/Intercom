@@ -85,6 +85,7 @@
             this.DeletingButtonAdress.TabIndex = 9;
             this.DeletingButtonAdress.Text = "Удалить";
             this.DeletingButtonAdress.UseVisualStyleBackColor = false;
+            this.DeletingButtonAdress.Click += new System.EventHandler(this.DeletingButtonAdress_Click);
             // 
             // EdditingButtonAdress
             // 
