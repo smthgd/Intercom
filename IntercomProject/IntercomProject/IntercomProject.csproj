@@ -62,6 +62,12 @@
     <Compile Include="ApplicationsForm.Designer.cs">
       <DependentUpon>ApplicationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAddressesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAddressesForm.Designer.cs">
+      <DependentUpon>EditAddressesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditApplicationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApplicationsForm.resx">
       <DependentUpon>ApplicationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAddressesForm.resx">
+      <DependentUpon>EditAddressesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditApplicationsForm.resx">
       <DependentUpon>EditApplicationsForm.cs</DependentUpon>

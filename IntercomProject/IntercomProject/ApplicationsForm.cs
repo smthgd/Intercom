@@ -378,11 +378,12 @@ namespace IntercomProject
             MoreApplicationsForm moreForm = new MoreApplicationsForm();
             moreForm.Show();
 
-            string query = "SELECT Абоненты.Фамилия, Абоненты.Имя, Абоненты.Отчество,  Абоненты.`номер телефона`, " +
-                           "Абоненты.`электронная почта`, Домофоны.`Тип домофона` FROM mydb.Заявки " +
-                           "JOIN mydb.Абоненты ON Заявки.КвартираID = Абоненты.КвартираID " +
-                           "JOIN mydb.Подъезды ON Заявки.ПодъездID = Подъезды.idПодъезды " +
-                           "JOIN mydb.Домофоны ON Подъезды.ДомофоныID = Домофоны.idДомофоны WHERE Заявки.idЗаявки = @ApplicationId;";
+            string query = "SELECT IFNULL(Абоненты.Фамилия, '') AS Фамилия, IFNULL(Абоненты.Имя, '') AS Имя, " +
+                           "IFNULL(Абоненты.Отчество, '') AS Отчество, IFNULL(Абоненты.`номер телефона`, '') AS `Номер телефона`, " +
+                           "IFNULL(Абоненты.`электронная почта`, '') AS `Электронная почта`, IFNULL(Домофоны.`Тип домофона`, '') " +
+                           "AS `Тип домофона` FROM mydb.Заявки LEFT JOIN mydb.Абоненты ON Заявки.КвартираID = Абоненты.КвартираID " +
+                           "LEFT JOIN mydb.Подъезды ON Заявки.ПодъездID = Подъезды.idПодъезды " +
+                           "LEFT JOIN mydb.Домофоны ON Подъезды.ДомофоныID = Домофоны.idДомофоны WHERE Заявки.idЗаявки = @ApplicationId;";
 
             using (var connection = new MySqlConnection(connectionString))
             {
