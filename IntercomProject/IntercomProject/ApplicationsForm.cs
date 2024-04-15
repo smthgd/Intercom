@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 
 namespace IntercomProject
 {
@@ -19,7 +20,7 @@ namespace IntercomProject
         public ApplicationsForm()
         {
             InitializeComponent();
-            LoadData(); 
+            LoadData();
         }
 
         private void LoadData()
@@ -368,6 +369,46 @@ namespace IntercomProject
                     command.ExecuteNonQuery();
 
                     LoadData();
+                }
+            }
+        }
+
+        private void MoreButton_Click(object sender, EventArgs e)
+        {
+            MoreApplicationsForm moreForm = new MoreApplicationsForm();
+            moreForm.Show();
+
+            string query = "SELECT Абоненты.Фамилия, Абоненты.Имя, Абоненты.Отчество,  Абоненты.`номер телефона`, " +
+                           "Абоненты.`электронная почта`, Домофоны.`Тип домофона` FROM mydb.Заявки " +
+                           "JOIN mydb.Абоненты ON Заявки.КвартираID = Абоненты.КвартираID " +
+                           "JOIN mydb.Подъезды ON Заявки.ПодъездID = Подъезды.idПодъезды " +
+                           "JOIN mydb.Домофоны ON Подъезды.ДомофоныID = Домофоны.idДомофоны WHERE Заявки.idЗаявки = @ApplicationId;";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@ApplicationId", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+
+                using (MySqlDataReader dataReader = command.ExecuteReader())
+                {
+                    dataReader.Read();
+
+                    string clientSurname = dataReader["Фамилия"].ToString();
+                    string clientName = dataReader["Имя"].ToString();
+                    string clientSecondName = dataReader["Отчество"].ToString();
+                    string clientTelephoneNumber = dataReader["номер телефона"].ToString();
+                    string clientEmail = dataReader["электронная почта"].ToString();
+                    string intercomType = dataReader["Тип домофона"].ToString();
+
+                    moreForm.ApplicationClientSurname = clientSurname;
+                    moreForm.ApplicationClientName = clientName;
+                    moreForm.ApplicationClientSecondName = clientSecondName;
+                    moreForm.ApplicationTelephoneNumber = clientTelephoneNumber;
+                    moreForm.ApplicationEmail = clientEmail;
+                    moreForm.ApplicationIntercomType = intercomType;
                 }
             }
         }

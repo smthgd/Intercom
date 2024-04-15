@@ -84,6 +84,7 @@
             this.MoreButton.TabIndex = 4;
             this.MoreButton.Text = "Подробнее";
             this.MoreButton.UseVisualStyleBackColor = false;
+            this.MoreButton.Click += new System.EventHandler(this.MoreButton_Click);
             // 
             // EdditingButton
             // 
