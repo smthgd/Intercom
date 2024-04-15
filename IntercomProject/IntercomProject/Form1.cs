@@ -69,5 +69,51 @@ namespace IntercomProject
         {
             Close();
         }
+
+        private void employeesButton_Click(object sender, EventArgs e)
+        {
+            EmployeesApplicationsForm addressesForm = new EmployeesApplicationsForm();
+
+            if (Application.OpenForms.OfType<EmployeesApplicationsForm>().Count() == 0 && Application.OpenForms.OfType<EmployeesApplicationsForm>().Count() == 0)
+            {
+                addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
+                addressesForm.Show();
+            }
+            else
+            {
+                foreach (Form mdiChildForm in this.MdiChildren)
+                {
+                    mdiChildForm.Close();
+                }
+
+                addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
+                addressesForm.Show();
+            }
+        }
+
+        private void intercomeButton_Click(object sender, EventArgs e)
+        {
+            IntercomeApplicationsForm addressesForm = new IntercomeApplicationsForm();
+
+            if (Application.OpenForms.OfType<IntercomeApplicationsForm>().Count() == 0 && Application.OpenForms.OfType<IntercomeApplicationsForm>().Count() == 0)
+            {
+                addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
+                addressesForm.Show();
+            }
+            else
+            {
+                foreach (Form mdiChildForm in this.MdiChildren)
+                {
+                    mdiChildForm.Close();
+                }
+
+                addressesForm.MdiParent = this;
+                addressesForm.Dock = DockStyle.Fill;
+                addressesForm.Show();
+            }
+        }
     }
 }

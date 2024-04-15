@@ -74,11 +74,23 @@
     <Compile Include="EditApplicationsForm.Designer.cs">
       <DependentUpon>EditApplicationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeesApplicationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesApplicationsForm.Designer.cs">
+      <DependentUpon>EmployeesApplicationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntercomeApplicationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntercomeApplicationsForm.Designer.cs">
+      <DependentUpon>IntercomeApplicationsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MoreApplicationsForm.cs">
       <SubType>Form</SubType>
@@ -100,8 +112,14 @@
     <EmbeddedResource Include="EditApplicationsForm.resx">
       <DependentUpon>EditApplicationsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesApplicationsForm.resx">
+      <DependentUpon>EmployeesApplicationsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntercomeApplicationsForm.resx">
+      <DependentUpon>IntercomeApplicationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoreApplicationsForm.resx">
       <DependentUpon>MoreApplicationsForm.cs</DependentUpon>
