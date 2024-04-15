@@ -129,6 +129,7 @@
             this.AddingButton.TabIndex = 1;
             this.AddingButton.Text = "Добавить";
             this.AddingButton.UseVisualStyleBackColor = false;
+            this.AddingButton.Click += new System.EventHandler(this.AddingButton_Click);
             // 
             // ApplicationsForm
             // 

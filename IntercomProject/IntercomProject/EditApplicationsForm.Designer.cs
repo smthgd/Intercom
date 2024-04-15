@@ -52,6 +52,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtApplicationDate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtApplicationDistrict = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +103,7 @@
             this.button2.TabIndex = 88;
             this.button2.Text = "ОК";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // comboBoxApplicationUser
             // 
@@ -266,11 +269,31 @@
             this.label1.TabIndex = 90;
             this.label1.Text = "Дата приема заявки:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(424, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 20);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "Район:";
+            // 
+            // txtApplicationDistrict
+            // 
+            this.txtApplicationDistrict.Location = new System.Drawing.Point(600, 138);
+            this.txtApplicationDistrict.Name = "txtApplicationDistrict";
+            this.txtApplicationDistrict.ReadOnly = true;
+            this.txtApplicationDistrict.Size = new System.Drawing.Size(167, 26);
+            this.txtApplicationDistrict.TabIndex = 109;
+            // 
             // EditApplicationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.txtApplicationDistrict);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxApplicationUser);
             this.Controls.Add(this.comboBoxApplicationAddress);
             this.Controls.Add(this.comboBoxApplicationEmployeeName);
@@ -299,7 +322,7 @@
             this.Name = "EditApplicationsForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Изменение заявки";
+            this.Text = "Работа с заявкой";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -331,5 +354,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtApplicationDate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtApplicationDistrict;
+        private System.Windows.Forms.Label label3;
     }
 }

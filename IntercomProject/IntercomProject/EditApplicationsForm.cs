@@ -76,6 +76,12 @@ namespace IntercomProject
             set { txtApplicationComplitionDate.Text = value; }
         }
 
+        public string ApplicationDistrict
+        {
+            get { return txtApplicationDistrict.Text; }
+            set { txtApplicationDistrict.Text = value; }
+        }
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
