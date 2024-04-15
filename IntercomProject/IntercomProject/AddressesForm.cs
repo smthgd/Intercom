@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,7 +48,11 @@ namespace IntercomProject
         {
             var form = new EditAddressesForm();
 
-            string query = "";
+            string idQuery = "SELECT Районы.idРайон, Адреса.idАдрес, Подъезды.idПодъезды, Квартиры.idКвартиры FROM mydb.Адреса JOIN mydb.Районы ON Адреса.РайонID = Районы.idРайон JOIN mydb.Подъезды ON Адреса.idАдрес = Подъезды.АдресаID JOIN mydb.Квартиры ON Подъезды.idПодъезды = Квартиры.ПодъездID;";
+            string updateQuery = "UPDATE mydb.Адреса SET Улица = @StreetName, `Номер дома` = @HouseNumber WHERE idАдрес = @AddressId; " +
+                           "UPDATE mydb.Районы SET `Название района` = @District WHERE idРайон = @DistrictId; " +
+                           "UPDATE mydb.Подъезды SET `Номер подъезда` = @EntranceNumber WHERE idПодъезды = @EntranceId; " +
+                           "UPDATE mydb.Квартиры SET `Номер квартиры` = @ApartmentNumber WHERE idКвартиры = @ApartmentId;";
 
             string editAddressDistrict = dataGridView2.CurrentRow.Cells[0].Value.ToString();
             string editAddressStreet = dataGridView2.CurrentRow.Cells[1].Value.ToString();
@@ -63,7 +68,43 @@ namespace IntercomProject
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("OK");
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    MySqlCommand command = new MySqlCommand(idQuery, connection);
+
+                    int distridId;
+                    int addressId;
+                    int entranceId;
+                    int apartmentId;
+
+                    using (MySqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        dataReader.Read();
+
+                        distridId = Convert.ToInt32(dataReader["idРайон"]);
+                        addressId = Convert.ToInt32(dataReader["idАдрес"]);
+                        entranceId = Convert.ToInt32(dataReader["idПодъезды"]);
+                        apartmentId = Convert.ToInt32(dataReader["idКвартиры"]);
+                    }
+
+                    command = new MySqlCommand(updateQuery, connection);
+
+                    command.Parameters.AddWithValue("@AddressId", addressId);
+                    command.Parameters.AddWithValue("@DistrictId", distridId);
+                    command.Parameters.AddWithValue("@EntranceId", entranceId);
+                    command.Parameters.AddWithValue("@ApartmentId", apartmentId);
+                    command.Parameters.AddWithValue("@StreetName", form.AddressStreet);
+                    command.Parameters.AddWithValue("@HouseNumber", form.AddressHouseNumber);
+                    command.Parameters.AddWithValue("@District", form.AddressDistrict);
+                    command.Parameters.AddWithValue("@EntranceNumber", form.AddressEntranceNumber);
+                    command.Parameters.AddWithValue("@ApartmentNumber", form.AddressApartmentNumber);
+
+                    command.ExecuteNonQuery();
+
+                    LoadData();
+                }
             }
         }
     }
