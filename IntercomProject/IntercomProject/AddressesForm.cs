@@ -41,7 +41,37 @@ namespace IntercomProject
 
         private void AddingButtonAdress_Click(object sender, EventArgs e)
         {
+            var form = new EditAddressesForm();
 
+            string insertQuery = "INSERT INTO mydb.Квартиры (`Номер квартиры`, `Дата первого начисления`, `Номер договора`, " +
+                                 "`Обслуживание приостановлено`, ПодъездID, `Тип участияID`, ТрубкиID, МониторыID) " +
+                                 "VALUES (@ApartmentNumber, @CurrentDate, @ContractNumber, 0, @EntranceNumber, 1, 1, 1);";
+            string additionalQuery = "SELECT MAX(idКвартиры) FROM mydb.Квартиры";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    MySqlCommand additionalCommand = new MySqlCommand(additionalQuery, connection);
+
+
+                    DateTime currentDate = DateTime.Now;
+                    string formattedDate = currentDate.ToString("yyyy-MM-dd");
+                    string apartmentNumber = form.AddressApartmentNumber;
+                    string entranceNumber = form.AddressEntranceNumber;
+
+                    command.Parameters.AddWithValue("@ApartmentNumber", apartmentNumber);
+                    command.Parameters.AddWithValue("@CurrentDate", formattedDate);
+                    command.Parameters.AddWithValue("@ContractNumber", Convert.ToInt32(additionalCommand.ExecuteScalar()) + 1);
+                    command.Parameters.AddWithValue("@EntranceNumber", entranceNumber);
+                    command.ExecuteNonQuery();
+
+                    LoadData();
+                }
+            }
         }
 
         private void EdditingButtonAdress_Click(object sender, EventArgs e)
