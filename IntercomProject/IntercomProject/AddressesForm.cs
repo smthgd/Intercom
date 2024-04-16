@@ -48,11 +48,13 @@ namespace IntercomProject
         {
             var form = new EditAddressesForm();
 
-            string idQuery = "SELECT Районы.idРайон, Адреса.idАдрес, Подъезды.idПодъезды, Квартиры.idКвартиры FROM mydb.Адреса JOIN mydb.Районы ON Адреса.РайонID = Районы.idРайон JOIN mydb.Подъезды ON Адреса.idАдрес = Подъезды.АдресаID JOIN mydb.Квартиры ON Подъезды.idПодъезды = Квартиры.ПодъездID;";
+            string idQuery = "SELECT Районы.idРайон, Адреса.idАдрес, Подъезды.idПодъезды, Квартиры.idКвартиры FROM mydb.Адреса " +
+                             "JOIN mydb.Районы ON Адреса.РайонID = Районы.idРайон JOIN mydb.Подъезды ON Адреса.idАдрес = Подъезды.АдресаID " +
+                             "JOIN mydb.Квартиры ON Подъезды.idПодъезды = Квартиры.ПодъездID;";
             string updateQuery = "UPDATE mydb.Адреса SET Улица = @StreetName, `Номер дома` = @HouseNumber WHERE idАдрес = @AddressId; " +
-                           "UPDATE mydb.Районы SET `Название района` = @District WHERE idРайон = @DistrictId; " +
-                           "UPDATE mydb.Подъезды SET `Номер подъезда` = @EntranceNumber WHERE idПодъезды = @EntranceId; " +
-                           "UPDATE mydb.Квартиры SET `Номер квартиры` = @ApartmentNumber WHERE idКвартиры = @ApartmentId;";
+                                 "UPDATE mydb.Районы SET `Название района` = @District WHERE idРайон = @DistrictId; " +
+                                 "UPDATE mydb.Подъезды SET `Номер подъезда` = @EntranceNumber WHERE idПодъезды = @EntranceId; " +
+                                 "UPDATE mydb.Квартиры SET `Номер квартиры` = @ApartmentNumber WHERE idКвартиры = @ApartmentId;";
 
             string editAddressDistrict = dataGridView2.CurrentRow.Cells[0].Value.ToString();
             string editAddressStreet = dataGridView2.CurrentRow.Cells[1].Value.ToString();
@@ -144,6 +146,54 @@ namespace IntercomProject
                     }
 
                     LoadData();
+                }
+            }
+        }
+
+        private void MoreButtonAdress_Click(object sender, EventArgs e)
+        {
+            MoreAdressApplicationsForm moreadressForm = new MoreAdressApplicationsForm();
+            moreadressForm.Show();
+
+            string query = "SELECT Абоненты.Фамилия, Абоненты.Имя, Абоненты.Отчество, Абоненты.`Номер телефона`, Абоненты.`Электронная почта`," +
+                "Квартиры.`Номер договора`, `Тип участия`.Тариф, Подъезды.Защита, Подъезды.Камера " +
+                "FROM Квартиры " +
+                "JOIN Абоненты ON idКвартиры = Абоненты.КвартираID " +
+                "JOIN `Тип участия` ON Квартиры.`Тип участияID` = `idТип участия` " +
+                "JOIN Подъезды ON Квартиры.ПодъездID = idПодъезды " +
+                "WHERE idКвартиры = @ApplicationId;";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@ApplicationId", dataGridView2.CurrentRow.Cells[4].Value.ToString());
+
+                using (MySqlDataReader dataReader = command.ExecuteReader())
+                {
+                    dataReader.Read();
+
+                    string clientSurname = dataReader["Фамилия"].ToString();
+                    string clientName = dataReader["Имя"].ToString();
+                    string clientSecondName = dataReader["Отчество"].ToString();
+                    string clientTelephoneNumber = dataReader["Номер телефона"].ToString();
+                    string clientEmail = dataReader["Электронная почта"].ToString();
+                    string contractNumber = dataReader["Номер договора"].ToString();
+                    string tarifPlan = dataReader["Тариф"].ToString();
+                    string protection = dataReader["Защита"].ToString();
+                    string camera = dataReader["Камера"].ToString();
+
+                    moreadressForm.ApplicationClientSurnameAdress = clientSurname;
+                    moreadressForm.ApplicationClientNameAdress = clientName;
+                    moreadressForm.ApplicationClientSecondNameAdress = clientSecondName;
+                    moreadressForm.ApplicationTelephoneNumberAdress = clientTelephoneNumber;
+                    moreadressForm.ApplicationEmailAdress = clientEmail;
+                    moreadressForm.ApplicationContractNumber = contractNumber;
+                    moreadressForm.ApplicationClientProtectionAdress = protection;
+                    moreadressForm.ApplicationClientCameraAdress = camera;
+                    moreadressForm.ApplicationTypeAdress = tarifPlan;
                 }
             }
         }

@@ -92,6 +92,12 @@
     <Compile Include="IntercomeApplicationsForm.Designer.cs">
       <DependentUpon>IntercomeApplicationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoreAdressApplicationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoreAdressApplicationsForm.Designer.cs">
+      <DependentUpon>MoreAdressApplicationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoreApplicationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IntercomeApplicationsForm.resx">
       <DependentUpon>IntercomeApplicationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoreAdressApplicationsForm.resx">
+      <DependentUpon>MoreAdressApplicationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoreApplicationsForm.resx">
       <DependentUpon>MoreApplicationsForm.cs</DependentUpon>

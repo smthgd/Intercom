@@ -70,6 +70,7 @@
             this.MoreButtonAdress.TabIndex = 10;
             this.MoreButtonAdress.Text = "Подробнее";
             this.MoreButtonAdress.UseVisualStyleBackColor = false;
+            this.MoreButtonAdress.Click += new System.EventHandler(this.MoreButtonAdress_Click);
             // 
             // DeletingButtonAdress
             // 
