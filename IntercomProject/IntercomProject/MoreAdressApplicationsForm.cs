@@ -12,11 +12,6 @@ namespace IntercomProject
 {
     public partial class MoreAdressApplicationsForm : Form
     {
-        public MoreAdressApplicationsForm()
-        {
-            InitializeComponent();
-        }
-
         public string ApplicationClientSurnameAdress
         {
             get { return txtApplicationClientSurnameAdress.Text; }
@@ -66,6 +61,11 @@ namespace IntercomProject
         {
             get { return txtApplicationTypeAdress.Text; }
             set { txtApplicationTypeAdress.Text = value; }
+        }
+
+        public MoreAdressApplicationsForm()
+        {
+            InitializeComponent();
         }
     }
 }

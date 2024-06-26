@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,13 +15,8 @@ namespace IntercomProject
 {
     public partial class EditApplicationsForm : Form
     {
-        public EditApplicationsForm()
-        {
-            InitializeComponent();
-            FillComboBox();
-        }
 
-        private static string connectionString = "server=127.0.0.1;port=3306;username=root;password=Chaplin-06-05-04-goldsteam-0;database=mydb";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
 
         public string ApplicationDate
         {
@@ -82,6 +78,12 @@ namespace IntercomProject
             set { txtApplicationDistrict.Text = value; }
         }
 
+        public EditApplicationsForm()
+        {
+            InitializeComponent();
+            FillComboBox();
+        }
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
@@ -107,17 +109,21 @@ namespace IntercomProject
             {
                 errorProvider1.SetError(comboBoxApplicationAddress, "Значение поля не может быть пустым");
             }
+            else if (string.IsNullOrEmpty(txtApplicationText.Text))
+            {
+                errorProvider1.SetError(txtApplicationText, "Значение поля не может быть пустым");
+            }
             else if (!Regex.IsMatch(txtApplicationDate.Text, pattern))
             {
-                errorProvider1.SetError(txtApplicationDate, "Значние поля не соответсвует маске");
+                errorProvider1.SetError(txtApplicationDate, "Значение поля не соответствует маске");
             }
             else if (!Regex.IsMatch(txtApplicationComplitionDate.Text, pattern))
             {
-                errorProvider1.SetError(txtApplicationComplitionDate, "Значние поля не соответсвует маске");
+                errorProvider1.SetError(txtApplicationComplitionDate, "Значение поля не соответствует маске");
             }
             else if (!Regex.IsMatch(txtApplicationServiceDate.Text, pattern))
             {
-                errorProvider1.SetError(txtApplicationServiceDate, "Значние поля не соответсвует маске");
+                errorProvider1.SetError(txtApplicationServiceDate, "Значение поля не соответствует маске");
             }
             else if (!comboBoxApplicationAddress.Items.Contains(comboBoxApplicationAddress.Text))
             {

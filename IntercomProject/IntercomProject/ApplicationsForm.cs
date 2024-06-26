@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using System.Configuration;
 
 namespace IntercomProject
 {
     public partial class ApplicationsForm : Form
     {
-        private static string connectionString = "server=127.0.0.1;port=3306;username=root;password=Chaplin-06-05-04-goldsteam-0;database=mydb";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
 
         public ApplicationsForm()
         {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace IntercomProject
 {
     public partial class IntercomeApplicationsForm : Form
     {
-        private static string connectionString = "server=127.0.0.1;port=3306;username=root;password=Chaplin-06-05-04-goldsteam-0;database=mydb";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
 
         public IntercomeApplicationsForm()
         {
