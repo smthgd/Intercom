@@ -5,11 +5,6 @@ namespace IntercomProject
 {
     public partial class EditAddressesForm : Form
     {
-        public EditAddressesForm()
-        {
-            InitializeComponent();
-        }
-
         public string AddressDistrict
         {
             get { return txtAddressDistrict.Text; }
@@ -38,6 +33,11 @@ namespace IntercomProject
         {
             get { return txtAddressApartmentNumber.Text; }
             set { txtAddressApartmentNumber.Text = value; }
+        }
+
+        public EditAddressesForm()
+        {
+            InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
